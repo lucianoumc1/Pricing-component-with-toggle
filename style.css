@@ -1,0 +1,204 @@
+:root {
+  --very-light-grayish-blue:hsl(240, 78%, 98%);
+  --light-grayish-blue:hsl(234, 14%, 74%);
+  --grayish-blue:hsl(233, 13%, 49%);
+  --dark-grayish-blue:hsl(232, 13%, 33%);
+  --color-primary:hsl(236, 72%, 79%) to hsl(237, 63%, 64%);
+
+  --font-size-base:12px;
+  --font-size-large:20px;
+  --font-size-small:10px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--font-size-base);
+  margin: 0;
+  padding: 0;
+}
+.pricing-component {
+  background-color: var(--very-light-grayish-blue);
+  display: block;
+  overflow: hidden;
+  width: 100vw;
+  text-align: center;
+  position: relative;
+  padding: 5rem;
+}
+.pricing-component::before {
+  content: "";
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: url(./images/bg-bottom.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: contain;
+}
+.pricing-component::after {
+  content: "";
+  width: 400px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url(./images/bg-top.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+}
+.pricing-component h2 {
+  font-size: var(--font-size-large);
+  color: var(--grayish-blue);
+  margin-top: 1rem;
+  z-index: 5;
+}
+.pricing-component__toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  z-index: 5;
+}
+.pricing-component__toggle span {
+  color: var(--light-grayish-blue);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+}
+.switchBtn {
+  min-width: 45px;
+  width: 45px;
+  margin: 0 20px;
+  background-color: var(--very-light-grayish-blue);
+  position: relative;
+  z-index: 5;
+}
+.switchBtn input {
+  display:none;
+}
+.slide {
+  cursor: pointer;
+  min-width: 100%;
+  -webkit-transition: .4s;
+  transition: .4s;
+  min-height: 25px;
+  height: 25px;
+  cursor: pointer;
+  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  border-radius: 50px;
+}
+.slide:before {
+  position: absolute;
+  content: "";
+  left: 3px;
+  top: 2.5px;
+  -webkit-transition: .4s;
+  transition: .4s;
+  box-shadow: 1px 1px 3px var(--dark-grayish-blue);
+  background-color: #FFFFFF;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+input:checked + .slide:before {
+  left: 22px;
+}
+.pricing-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  flex-wrap: nowrap;
+}
+.pricing-cards__card {
+  width: 250px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px #bfbebe6d;
+  z-index: 1;
+}
+.pricing-cards__tittle {
+  font-size: var(--font-size-base);
+  color: var(--grayish-blue);
+  margin-top: 30px;
+}
+.pricing-cards__price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--dark-grayish-blue);
+  margin-bottom: 15px;
+  margin: 0 auto;
+  
+}
+.details {
+  display: block;
+  width: 100%;
+  color: var(--grayish-blue);
+  padding: 0 20px;
+  margin-top: 20px;
+}
+.pricing-cards .details li {
+  list-style: none;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  padding: 12px;
+  border-top: 1px solid #bfbebe6d;
+}
+.pricing-cards .details li:last-child {
+  border-bottom: 1px solid #bfbebe6d;
+}
+.pricing-cards__button {
+  width: 80%;
+  margin: 10px auto 30px;
+  padding: 10px 0;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  text-transform: uppercase;
+  transition: opacity 0.2s ease-in-out;
+}
+.pricing-cards__button:hover {
+  opacity: .8;
+}
+.pricing-cards__card:nth-child(even) {
+  background: linear-gradient(to bottom, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  color: white;
+  z-index: 5;
+  transform: scale(1.08);
+}
+.pricing-cards__card:nth-child(even) *{
+  color: white;
+}
+.pricing-cards__card:nth-child(even) .pricing-cards__button{
+  color: hsl(237, 63%, 64%);
+  background: white;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+.hidden {
+  display: none;
+}
+@media (max-width: 768px) {
+  .pricing-cards {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .pricing-component::after {
+    right: -150px;
+  }
+}
